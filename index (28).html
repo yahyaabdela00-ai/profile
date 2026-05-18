@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yahya Mohammed Abdela — AI Researcher & Founder</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FFFFFF;
+  --bg2:#F6F8FE;
+  --bg3:#EEF2FC;
+  --ink:#0A1850;
+  --ink2:#1B2D6E;
+  --blue:#1E3FB8;
+  --blue2:#3B5FE0;
+  --blue3:#6B8AF0;
+  --accent:#C9D5FA;
+  --muted:#6B7FB0;
+  --line:rgba(30,63,184,.1);
+  --line2:rgba(30,63,184,.22);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased}
+
+/* ── CURSOR ── */
+#c1{width:6px;height:6px;border-radius:50%;background:var(--blue);position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(30,63,184,.5)}
+#c2{width:32px;height:32px;border-radius:50%;border:1px solid rgba(30,63,184,.3);position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .25s,height .25s,border-color .25s}
+#c2.lg{width:60px;height:60px;border-color:var(--blue);background:rgba(30,63,184,.05)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.6rem 5rem;display:flex;justify-content:center;align-items:center;background:rgba(255,255,255,0);backdrop-filter:blur(0);transition:all .35s}
+nav.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);padding:1.1rem 5rem}
+.brand{font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.brand em{color:var(--blue);font-style:italic}
+.nav-l{display:flex;gap:2.8rem}
+.nav-l a{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;font-weight:400}
+.nav-l a:hover{color:var(--blue)}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);text-decoration:none;padding:.65rem 1.3rem;border:1px solid var(--blue);transition:all .3s;font-weight:600}
+.nav-cta:hover{background:var(--blue);color:#fff}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.h-left{position:relative;z-index:10;padding:8rem 4rem 4rem 5rem;display:flex;flex-direction:column;justify-content:center}
+.h-eyebrow{display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:600;opacity:0;animation:fadeUp .7s .2s forwards}
+.h-eyebrow::before{content:'';width:32px;height:2px;background:var(--blue)}
+.h-title{font-family:'Fraunces',serif;font-weight:600;line-height:.92;letter-spacing:-.025em;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s .35s forwards}
+.h-l1{font-size:clamp(2rem,3.5vw,4rem);color:var(--ink2);font-weight:400;display:block;margin-bottom:.3rem}
+.h-l2{font-size:clamp(4rem,7vw,8rem);font-style:italic;display:block;background:linear-gradient(135deg,var(--blue),var(--ink),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:.85;margin-bottom:.1rem;text-shadow:0 0 60px rgba(30,63,184,.15)}
+.h-l3{font-size:clamp(2rem,3.5vw,4rem);color:var(--ink2);font-weight:400;display:block;margin-top:.3rem}
+.h-l3 em{font-style:italic;color:var(--blue)}
+.h-sub{font-size:1.02rem;line-height:1.85;color:var(--muted);max-width:480px;margin-bottom:3rem;opacity:0;animation:fadeUp .9s .55s forwards;font-weight:400}
+.h-sub strong{color:var(--ink);font-weight:600}
+.h-btns{display:flex;gap:1rem;opacity:0;animation:fadeUp .8s .7s forwards}
+.btn-pri{padding:1rem 2rem;background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:none;border:1px solid var(--blue);position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.8rem}
+.btn-pri:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-2px);box-shadow:0 14px 30px rgba(10,24,80,.2)}
+.btn-pri svg{width:14px;height:14px;transition:transform .3s}
+.btn-pri:hover svg{transform:translateX(4px)}
+.btn-sec{padding:1rem 2rem;background:transparent;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;transition:all .3s;cursor:none;border:1px solid var(--line2)}
+.btn-sec:hover{border-color:var(--ink);background:var(--bg3)}
+
+/* Hero footer stats */
+.h-stats{position:absolute;bottom:3rem;left:5rem;right:5rem;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--line);padding-top:2rem;opacity:0;animation:fadeUp .8s .85s forwards;z-index:11}
+.h-stats-l{display:flex;gap:4rem}
+.hs-n{font-family:'Fraunces',serif;font-weight:700;font-style:italic;font-size:2.2rem;color:var(--blue);line-height:1}
+.hs-l{font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;font-weight:400}
+.h-stats-r{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.7;display:flex;align-items:center;gap:.6rem}
+.h-stats-r::before{content:'';display:inline-block;width:7px;height:7px;background:#22C55E;border-radius:50%;box-shadow:0 0 8px rgba(34,197,94,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.h-right{position:relative;overflow:hidden}
+#heroCv{position:absolute;inset:0;width:100%;height:100%}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* Ethiopia banner */
+.ethiopia-banner{position:absolute;top:50%;right:5rem;transform:translateY(-50%);z-index:9;text-align:right;pointer-events:none;opacity:0;animation:fadeUp 1s 1s forwards}
+.eb-label{font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.eb-text{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3vw,3rem);font-weight:600;font-style:italic;color:var(--blue);line-height:1;letter-spacing:-.02em}
+.eb-line{width:60px;height:2px;background:var(--blue);margin-left:auto;margin-top:.8rem}
+
+/* ── MARQUEE ── */
+.marquee{padding:1.2rem 0;background:var(--ink);overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mq-inner{display:flex;animation:scroll 32s linear infinite;white-space:nowrap}
+.mq-i{display:inline-flex;align-items:center;gap:3rem;padding:0 3rem;font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;color:rgba(255,255,255,.9);font-weight:400}
+.mq-i b{color:var(--blue3);font-weight:400;font-style:normal}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ── */
+section{position:relative;padding:8rem 5rem}
+.sec-header{display:flex;align-items:center;gap:1rem;margin-bottom:5rem}
+.sh-num{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--blue);font-weight:600;letter-spacing:.1em}
+.sh-line{width:60px;height:1px;background:var(--line2)}
+.sh-text{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:7rem;align-items:start}
+.about-h{font-family:'Fraunces',serif;font-size:clamp(2.5rem,4.5vw,5rem);font-weight:600;line-height:1.05;color:var(--ink);margin-bottom:3rem;letter-spacing:-.02em}
+.about-h em{font-style:italic;color:var(--blue)}
+.about-p{font-size:1rem;line-height:1.95;color:var(--muted);margin-bottom:1.6rem;font-weight:400;max-width:50ch}
+.about-p strong{color:var(--ink);font-weight:600}
+.quote-box{margin-top:3rem;padding:2rem 0 2rem 2.5rem;border-left:2px solid var(--blue);position:relative}
+.quote-box::before{content:'"';position:absolute;top:-1rem;left:.5rem;font-family:'Fraunces',serif;font-size:6rem;color:var(--blue);opacity:.15;line-height:1}
+.quote-box p{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;line-height:1.7;color:var(--ink2);font-weight:400}
+.quote-attr{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-top:1.2rem;font-weight:600}
+
+/* Facts column */
+.facts-card{background:var(--bg2);border:1px solid var(--line);padding:2.5rem;position:sticky;top:6rem}
+.facts-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:1.5rem;border-bottom:1px solid var(--line);margin-bottom:1rem}
+.facts-title{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:600}
+.facts-dot{width:8px;height:8px;background:#22C55E;border-radius:50%;box-shadow:0 0 8px rgba(34,197,94,.5);animation:pulse 2s infinite}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.fact-row:last-child{border-bottom:none}
+.fr-l{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.fr-v{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;font-style:italic;color:var(--blue);line-height:1}
+
+/* ── SERVICES ── */
+.svc-section{background:var(--ink);color:#fff;overflow:hidden;position:relative}
+.svc-section .sh-text{color:rgba(255,255,255,.5)}
+.svc-section .sh-line{background:rgba(255,255,255,.2)}
+.svc-section .sh-num{color:var(--blue3)}
+.svc-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(30,63,184,.15) 0%,transparent 50%);pointer-events:none}
+.svc-intro{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;margin-bottom:5rem;position:relative;z-index:2}
+.svc-h{font-family:'Fraunces',serif;font-size:clamp(2.5rem,4.5vw,5rem);font-weight:600;line-height:1.05;color:#fff;letter-spacing:-.02em}
+.svc-h em{font-style:italic;color:var(--blue3)}
+.svc-desc{font-size:1rem;line-height:1.9;color:rgba(255,255,255,.55);max-width:45ch;font-weight:400}
+.svc-list{position:relative;z-index:2}
+.svc-item{border-top:1px solid rgba(255,255,255,.1);padding:2.2rem 0;display:grid;grid-template-columns:60px 1fr 1fr auto;gap:2rem;align-items:center;transition:padding-left .3s,background .3s;cursor:none;position:relative;overflow:hidden}
+.svc-item:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.svc-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--blue);transition:width .4s}
+.svc-item:hover{padding-left:1.5rem}
+.svc-item:hover::before{width:3px}
+.si-n{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.08em}
+.si-name{font-family:'Fraunces',serif;font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:600;color:#fff;line-height:1.1;transition:color .3s;letter-spacing:-.01em}
+.svc-item:hover .si-name{color:var(--blue3)}
+.si-desc{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:40ch}
+.si-arrow{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.si-arrow svg{width:14px;height:14px;color:rgba(255,255,255,.5);transition:all .3s}
+.svc-item:hover .si-arrow{background:var(--blue);border-color:var(--blue)}
+.svc-item:hover .si-arrow svg{color:#fff;transform:translateX(2px)}
+
+/* ── MARKETS (cyan accent banner) ── */
+.markets{padding:5rem;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.markets-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3rem}
+.markets-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.markets-count{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.markets-row{display:flex;flex-wrap:wrap;gap:0;align-items:baseline}
+.mkt{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,5.5rem);font-weight:700;color:rgba(30,63,184,.12);padding:.1rem 1.8rem .1rem 0;line-height:1.05;transition:all .4s;cursor:default;letter-spacing:-.02em}
+.mkt:hover{color:var(--blue)}
+.mkt.it{font-style:italic}
+
+/* ── LABS ── */
+.labs-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start;margin-bottom:4rem}
+.labs-h{font-family:'Fraunces',serif;font-size:clamp(2.5rem,4.5vw,5rem);font-weight:600;line-height:1.05;color:var(--ink);margin-bottom:2rem;letter-spacing:-.02em}
+.labs-h em{font-style:italic;color:var(--blue)}
+.labs-p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:2rem;max-width:48ch}
+.labs-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.lab{background:var(--bg2);border:1px solid var(--line);padding:2.5rem 2rem;transition:all .35s;cursor:none;position:relative}
+.lab::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.lab:hover{border-color:var(--line2);background:var(--bg);transform:translateY(-4px);box-shadow:0 12px 30px rgba(10,24,80,.06)}
+.lab:hover::after{transform:scaleX(1)}
+.lab-num{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--blue);font-weight:600;letter-spacing:.12em;margin-bottom:1.5rem}
+.lab-t{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:.8rem;line-height:1.2;letter-spacing:-.01em}
+.lab-d{font-size:.85rem;line-height:1.8;color:var(--muted)}
+
+/* ── GCC ── */
+.gcc-section{background:var(--bg)}
+.gcc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.gcc-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.5rem 1.2rem;background:rgba(30,63,184,.06);border:1px solid var(--line2);margin-bottom:2rem;font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.gcc-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+.gcc-h{font-family:'Fraunces',serif;font-size:clamp(2.5rem,4.5vw,5rem);font-weight:600;line-height:1.05;color:var(--ink);margin-bottom:2rem;letter-spacing:-.02em}
+.gcc-h em{font-style:italic;color:var(--blue)}
+.gcc-p{font-size:1rem;line-height:1.9;color:var(--muted);margin-bottom:1.5rem;max-width:48ch}
+.phases{display:flex;flex-direction:column}
+.phase{padding:1.8rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:2.5rem 1fr;gap:2rem;cursor:none;transition:padding-left .3s}
+.phase:last-child{border-bottom:none}
+.phase:hover{padding-left:.5rem}
+.ph-n{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--blue);font-weight:600;letter-spacing:.1em;padding-top:.15rem}
+.ph-t{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;letter-spacing:-.01em}
+.ph-d{font-size:.85rem;line-height:1.7;color:var(--muted)}
+
+/* ── CONTACT ── */
+.contact-section{background:var(--bg2);position:relative;overflow:hidden}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start;position:relative;z-index:2}
+.ct-h{font-family:'Fraunces',serif;font-size:clamp(4rem,8vw,8rem);font-weight:600;line-height:.9;color:var(--ink);margin-bottom:3rem;letter-spacing:-.03em}
+.ct-h em{font-style:italic;background:linear-gradient(135deg,var(--blue),var(--ink),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ct-sub{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:3rem;max-width:42ch}
+.social-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.soc{position:relative;text-decoration:none;cursor:none;transform-style:preserve-3d;transition:transform .15s;display:block}
+.soc:active{transform:translateY(3px)}
+.soc-top{position:relative;z-index:2;display:flex;align-items:center;gap:.7rem;padding:.95rem 1.6rem;background:var(--bg);border:1px solid var(--line2);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transform:translateY(0);transition:all .3s;box-shadow:0 2px 12px rgba(10,24,80,.06);white-space:nowrap}
+.soc:hover .soc-top{transform:translateY(-4px);border-color:var(--blue);color:var(--blue);box-shadow:0 10px 24px rgba(30,63,184,.2)}
+.soc-top svg{flex-shrink:0;transition:transform .3s}
+.soc:hover .soc-top svg{transform:scale(1.15) rotate(-5deg)}
+.soc-side{position:absolute;bottom:-4px;left:1px;right:1px;height:4px;z-index:1;background:linear-gradient(to bottom,rgba(30,63,184,.3),rgba(30,63,184,.1));clip-path:polygon(0 0,100% 0,98% 100%,2% 100%);transition:all .15s}
+.soc:hover .soc-side{bottom:-6px;height:6px;background:linear-gradient(to bottom,var(--blue),rgba(30,63,184,.3))}
+.soc:active .soc-side{bottom:-1px;height:1px}
+
+/* Form */
+.form-card{background:var(--bg);border:1px solid var(--line);padding:2.8rem}
+.form-h{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;letter-spacing:-.01em}
+.form-sub{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
+form{display:flex;flex-direction:column;gap:1.3rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.fg{display:flex;flex-direction:column;gap:.5rem}
+.fl{font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.fi,.fs,.ft{background:var(--bg2);border:1px solid var(--line);color:var(--ink);font-family:'Inter',sans-serif;font-size:.9rem;font-weight:400;padding:.9rem 1.1rem;outline:none;transition:all .3s;width:100%;-webkit-appearance:none;appearance:none;border-radius:0}
+.fi::placeholder,.ft::placeholder{color:var(--muted)}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--blue);background:var(--bg);box-shadow:0 0 0 3px rgba(30,63,184,.08)}
+.fs option{background:var(--bg);color:var(--ink)}
+.ft{resize:none;min-height:110px;font-family:'Inter',sans-serif}
+.send-btn{position:relative;background:transparent;border:none;cursor:none;padding:0;outline:none;margin-top:1rem;transform-style:preserve-3d;transition:transform .15s;width:fit-content}
+.send-btn:active{transform:translateY(3px)}
+.send-top{position:relative;z-index:2;display:flex;align-items:center;gap:1rem;padding:1.1rem 2.4rem;background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--blue);transform:translateY(0);transition:all .3s;box-shadow:0 4px 14px rgba(30,63,184,.25)}
+.send-btn:hover .send-top{transform:translateY(-3px);background:var(--ink);border-color:var(--ink);box-shadow:0 12px 30px rgba(10,24,80,.3)}
+.send-btn:active .send-top{transform:translateY(1px);box-shadow:0 2px 8px rgba(30,63,184,.2)}
+.send-side{position:absolute;bottom:-5px;left:1px;right:1px;height:5px;z-index:1;background:linear-gradient(to bottom,var(--ink),rgba(10,24,80,.5));clip-path:polygon(0 0,100% 0,98% 100%,2% 100%);transition:all .15s}
+.send-btn:hover .send-side{bottom:-8px;height:8px}
+.send-btn:active .send-side{bottom:-2px;height:2px}
+.send-arrow{font-size:1.1rem;transition:transform .3s}
+.send-btn:hover .send-arrow{transform:translateX(4px)}
+.f-ok{display:none;margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:#22C55E;font-weight:600;padding:.8rem 1rem;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:#fff;padding:5rem 5rem 3rem}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:5rem;margin-bottom:4rem}
+.foot-brand{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:#fff;margin-bottom:1rem;letter-spacing:-.02em}
+.foot-brand em{font-style:italic;color:var(--blue3)}
+.foot-desc{font-size:.88rem;line-height:1.8;color:rgba(255,255,255,.55);max-width:36ch}
+.foot-col h4{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.2rem;font-weight:600}
+.foot-col a{display:block;font-size:.85rem;color:rgba(255,255,255,.7);text-decoration:none;margin-bottom:.7rem;transition:color .3s}
+.foot-col a:hover{color:var(--blue3)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.12em;color:rgba(255,255,255,.4);font-weight:400}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-l{display:none}
+  #hero{grid-template-columns:1fr;min-height:auto}
+  .h-left{padding:6rem 1.5rem 3rem}
+  .h-stats{position:static;left:auto;right:auto;flex-direction:column;align-items:flex-start;gap:1.5rem;padding:1.5rem;margin-top:2rem}
+  .h-right{height:50vh}
+  .ethiopia-banner{display:none}
+  section{padding:5rem 1.5rem}
+  .markets{padding:4rem 1.5rem}
+  .about-grid,.svc-intro,.labs-grid,.gcc-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+  .svc-item{grid-template-columns:1fr;gap:.6rem}.si-arrow{display:none}
+  .labs-cards{grid-template-columns:1fr}
+  .facts-card{position:static}
+  .foot-grid{grid-template-columns:1fr;gap:2.5rem}
+  .foot-bottom{flex-direction:column;gap:1rem;text-align:center}
+  footer{padding:4rem 1.5rem 2rem}
+  .f-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="c1"></div>
+<div id="c2"></div>
+
+<nav id="nav">
+  <div class="nav-l">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#labs">Labs</a>
+    <a href="#gcc">GCC 2028</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-left">
+    <div class="h-eyebrow">Founder & CEO · AI Researcher</div>
+    <h1 class="h-title">
+      <span class="h-l1">From</span>
+      <span class="h-l2">Ethiopia</span>
+      <span class="h-l3">to world <em>tech solutions.</em></span>
+    </h1>
+    <p class="h-sub">Founder of a global tech and AI research lab in East Africa — <strong>international developers, government mega projects</strong>, and a 2028 GCC expansion on the horizon.</p>
+    <div class="h-btns">
+      <a class="btn-pri" href="#services">View Services <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+      <a class="btn-sec" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+  <div class="h-right">
+    <canvas id="heroCv"></canvas>
+    <div class="ethiopia-banner">
+      <div class="eb-label">Headquartered in</div>
+      <div class="eb-text">Addis Ababa, Ethiopia</div>
+      <div class="eb-line"></div>
+    </div>
+  </div>
+  <div class="h-stats">
+    <div class="h-stats-l">
+      <div><div class="hs-n" id="s1">0+</div><div class="hs-l">Years in Tech</div></div>
+      <div><div class="hs-n" id="s2">0</div><div class="hs-l">Active Stations</div></div>
+      <div><div class="hs-n" id="s3">0+</div><div class="hs-l">Countries</div></div>
+      <div><div class="hs-n" id="s4">0+</div><div class="hs-l">Dev Nationalities</div></div>
+    </div>
+    <div class="h-stats-r">Available for new projects · 2026</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mq-inner">
+    <div class="mq-i">AI Research <b>✦</b> App Development <b>✦</b> Web Development <b>✦</b> Mega Projects <b>✦</b> AI Solutions <b>✦</b> Ethiopia <b>✦</b> Kenya <b>✦</b> Rwanda <b>✦</b> Tanzania <b>✦</b> Saudi Arabia <b>✦</b> UAE <b>✦</b> GCC 2028 <b>✦</b></div>
+    <div class="mq-i">AI Research <b>✦</b> App Development <b>✦</b> Web Development <b>✦</b> Mega Projects <b>✦</b> AI Solutions <b>✦</b> Ethiopia <b>✦</b> Kenya <b>✦</b> Rwanda <b>✦</b> Tanzania <b>✦</b> Saudi Arabia <b>✦</b> UAE <b>✦</b> GCC 2028 <b>✦</b></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-header rv"><span class="sh-num">01</span><div class="sh-line"></div><span class="sh-text">About</span></div>
+  <div class="about-grid">
+    <div class="rv">
+      <h2 class="about-h">From Ethiopia's soil to the <em>world's stage.</em></h2>
+      <p class="about-p">Yahya Mohammed Abdela is a founder and AI researcher from <strong>Ethiopia</strong> — driven by one conviction: Africa should be building AI, not just consuming it.</p>
+      <p class="about-p">Fifteen years deep in tech, with twenty-seven active stations across the continent. In 2026 he launched a global tech and AI research lab in East Africa with international developers across six countries — building everything from mobile apps to government mega projects.</p>
+      <p class="about-p">85% government and public sector. 15% private. All built to last.</p>
+      <div class="quote-box">
+        <p>Pride and ego costs human beings to lose a great chance — even the devil was thrown away from heaven due to that. Being humble is all I appreciate in life.</p>
+        <div class="quote-attr">— Yahya Mohammed Abdela</div>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="facts-card">
+        <div class="facts-head">
+          <span class="facts-title">By the Numbers</span>
+          <div class="facts-dot"></div>
+        </div>
+        <div class="fact-row"><span class="fr-l">Years in Tech</span><span class="fr-v">15+</span></div>
+        <div class="fact-row"><span class="fr-l">Active Stations</span><span class="fr-v">27</span></div>
+        <div class="fact-row"><span class="fr-l">Countries Active</span><span class="fr-v">3+</span></div>
+        <div class="fact-row"><span class="fr-l">Dev Nationalities</span><span class="fr-v">6+</span></div>
+        <div class="fact-row"><span class="fr-l">Government Work</span><span class="fr-v">85%</span></div>
+        <div class="fact-row"><span class="fr-l">GCC Launch</span><span class="fr-v">2028</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="svc-section">
+  <div class="sec-header rv"><span class="sh-num">02</span><div class="sh-line"></div><span class="sh-text">Services</span></div>
+  <div class="svc-intro">
+    <h2 class="svc-h rv">We build things<br>that <em>actually work.</em></h2>
+    <p class="svc-desc rv d2">From mobile apps to mega-project AI — every solution built with precision, purpose, and deep understanding of the African and Gulf markets.</p>
+  </div>
+  <div class="svc-list">
+    <a class="svc-item rv" href="#contact">
+      <div class="si-n">01</div>
+      <div class="si-name">App Development</div>
+      <div class="si-desc">Native and cross-platform mobile apps. iOS, Android. Performance-first, Africa-ready.</div>
+      <div class="si-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></div>
+    </a>
+    <a class="svc-item rv" href="#contact">
+      <div class="si-n">02</div>
+      <div class="si-name">Web Development</div>
+      <div class="si-desc">High-performance websites and enterprise platforms. Built to scale globally.</div>
+      <div class="si-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></div>
+    </a>
+    <a class="svc-item rv" href="#contact">
+      <div class="si-n">03</div>
+      <div class="si-name">AI Solutions</div>
+      <div class="si-desc">Custom AI — chatbots, predictive systems, computer vision. Purpose-built for your context.</div>
+      <div class="si-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></div>
+    </a>
+    <a class="svc-item rv" href="#contact">
+      <div class="si-n">04</div>
+      <div class="si-name">Mega Projects</div>
+      <div class="si-desc">Large-scale digital transformation for governments and institutions. Zero shortcuts.</div>
+      <div class="si-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></div>
+    </a>
+    <a class="svc-item rv" href="#contact">
+      <div class="si-n">05</div>
+      <div class="si-name">AI Research</div>
+      <div class="si-desc">Original research for emerging markets — language models, ethical frameworks, applied AI.</div>
+      <div class="si-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></div>
+    </a>
+    <a class="svc-item rv" href="#contact">
+      <div class="si-n">06</div>
+      <div class="si-name">Infrastructure</div>
+      <div class="si-desc">Cloud architecture, APIs, databases — the backbone that keeps ecosystems running.</div>
+      <div class="si-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h12M9 3l5 5-5 5"/></svg></div>
+    </a>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<div class="markets rv">
+  <div class="markets-head">
+    <div class="markets-label">Active Markets</div>
+    <div class="markets-count">6 Countries · 2 Continents</div>
+  </div>
+  <div class="markets-row">
+    <span class="mkt">Ethiopia</span>
+    <span class="mkt it">Kenya</span>
+    <span class="mkt">Rwanda</span>
+    <span class="mkt it">Tanzania</span>
+    <span class="mkt">Saudi Arabia</span>
+    <span class="mkt it">UAE</span>
+  </div>
+</div>
+
+<!-- LABS -->
+<section id="labs">
+  <div class="sec-header rv"><span class="sh-num">03</span><div class="sh-line"></div><span class="sh-text">Tech Labs · East Africa</span></div>
+  <div class="labs-grid">
+    <div class="rv">
+      <h2 class="labs-h">A lab built for<br><em>Africa's scale.</em></h2>
+      <p class="labs-p">Launched in 2026 — a global tech and AI research lab headquartered in East Africa with international developers from six countries, building solutions for the continent's hardest problems.</p>
+    </div>
+    <div class="rv d2"></div>
+  </div>
+  <div class="labs-cards">
+    <div class="lab rv"><div class="lab-num">LAB · 01</div><div class="lab-t">AI Infrastructure</div><div class="lab-d">Production-grade AI for real-world African connectivity and data conditions.</div></div>
+    <div class="lab rv d1"><div class="lab-num">LAB · 02</div><div class="lab-t">Government & Public Sector</div><div class="lab-d">AI tools for institutions serving millions — cybersecurity, citizen platforms, governance.</div></div>
+    <div class="lab rv d2"><div class="lab-num">LAB · 03</div><div class="lab-t">Research & Innovation</div><div class="lab-d">African language models, responsible AI frameworks, applied research that ships.</div></div>
+  </div>
+</section>
+
+<!-- GCC -->
+<section id="gcc" class="gcc-section">
+  <div class="sec-header rv"><span class="sh-num">04</span><div class="sh-line"></div><span class="sh-text">GCC Expansion · 2028</span></div>
+  <div class="gcc-grid">
+    <div class="rv">
+      <div class="gcc-badge"><div class="gcc-dot"></div>Planned · 2028 Launch</div>
+      <h2 class="gcc-h">East Africa to the <em>Gulf.</em></h2>
+      <p class="gcc-p">What's being built in East Africa is the foundation for something bigger. By 2028, the labs expand into Saudi Arabia and the UAE — bringing African AI capability to one of the world's fastest-growing tech markets.</p>
+      <p class="gcc-p">Saudi Arabia. UAE. Qatar. The bridge between African talent and Gulf ambition is being built right now.</p>
+    </div>
+    <div class="phases rv d2">
+      <div class="phase">
+        <div class="ph-n">01</div>
+        <div><div class="ph-t">East Africa Foundation — Now</div><div class="ph-d">Labs live in Ethiopia, Kenya, Rwanda. International teams. Mega projects running.</div></div>
+      </div>
+      <div class="phase">
+        <div class="ph-n">02</div>
+        <div><div class="ph-t">Scale & Partnerships — 2026 to 2027</div><div class="ph-d">Growing research, dev network, and GCC institutional partnerships.</div></div>
+      </div>
+      <div class="phase">
+        <div class="ph-n">03</div>
+        <div><div class="ph-t">Gulf Market Entry — 2028</div><div class="ph-d">Full operation in Saudi Arabia and UAE. Government and enterprise AI clients.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="sec-header rv"><span class="sh-num">05</span><div class="sh-line"></div><span class="sh-text">Get in Touch</span></div>
+  <div class="contact-grid">
+    <div class="rv">
+      <h2 class="ct-h">Let's<br>build<br><em>together.</em></h2>
+      <p class="ct-sub">Research collaboration. App and web projects. Government AI. GCC partnerships. Speaking. The conversation starts here.</p>
+      <div class="social-row">
+        <a class="soc" href="https://www.instagram.com/yahya_m_abdela?igsh=MTNrMHVhNWp0cnhieQ%3D%3D&utm_source=qr" target="_blank">
+          <div class="soc-top">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Instagram</span>
+          </div>
+          <div class="soc-side"></div>
+        </a>
+        <a class="soc" href="#" target="_blank">
+          <div class="soc-top">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span>LinkedIn</span>
+          </div>
+          <div class="soc-side"></div>
+        </a>
+        <a class="soc" href="#" target="_blank">
+          <div class="soc-top">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span>X / Twitter</span>
+          </div>
+          <div class="soc-side"></div>
+        </a>
+      </div>
+    </div>
+    <div class="rv d2">
+      <div class="form-card">
+        <div class="form-h">Send a message</div>
+        <div class="form-sub">We respond within 24 hours</div>
+        <form id="form">
+          <div class="f-row">
+            <div class="fg"><label class="fl">Full Name *</label><input class="fi" name="name" placeholder="Your full name" required></div>
+            <div class="fg"><label class="fl">Email *</label><input class="fi" name="email" type="email" placeholder="your@email.com" required></div>
+          </div>
+          <div class="f-row">
+            <div class="fg"><label class="fl">Organisation</label><input class="fi" name="org" placeholder="Company / institution"></div>
+            <div class="fg"><label class="fl">Country</label><input class="fi" name="country" placeholder="Your country"></div>
+          </div>
+          <div class="fg">
+            <label class="fl">Service Needed *</label>
+            <select class="fs" name="service" required>
+              <option value="" disabled selected>— Select a service —</option>
+              <option>App Development</option>
+              <option>Web Development</option>
+              <option>AI Solutions</option>
+              <option>Mega Projects / Gov Tech</option>
+              <option>AI Research</option>
+              <option>Infrastructure</option>
+              <option>GCC Partnership</option>
+              <option>Speaking / Keynote</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl">Your Message *</label>
+            <textarea class="ft" name="message" placeholder="Tell us about your project, timeline, and goals..." required></textarea>
+          </div>
+          <button class="send-btn" type="submit">
+            <div class="send-top">
+              <span>Send Message</span>
+              <span class="send-arrow">→</span>
+            </div>
+            <div class="send-side"></div>
+          </button>
+          <div class="f-ok" id="ok">✓ Sent — we'll be in touch within 24 hours.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand">Yahya <em>Mohammed</em> Abdela</div>
+      <p class="foot-desc">Founder & CEO building global tech and AI solutions from Ethiopia to the world.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Navigate</h4>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#labs">Tech Labs</a>
+      <a href="#gcc">GCC 2028</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>Connect</h4>
+      <a href="https://www.instagram.com/yahya_m_abdela?igsh=MTNrMHVhNWp0cnhieQ%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">X / Twitter</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 Yahya Mohammed Abdela · All rights reserved</p>
+    <p>Addis Ababa, Ethiopia · East Africa · GCC 2028</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// CURSOR
+const c1=document.getElementById('c1'),c2=document.getElementById('c2');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px';});
+(function lp(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;c2.style.left=cx+'px';c2.style.top=cy+'px';requestAnimationFrame(lp);})();
+document.querySelectorAll('a,button,input,select,textarea,.svc-item,.lab,.phase,.mkt,.fact-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>c2.classList.add('lg'));
+  el.addEventListener('mouseleave',()=>c2.classList.remove('lg'));
+});
+
+// NAV scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60));
+
+// REVEAL
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');});},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('on');}),150);
+
+// COUNT UP
+const targets=[{id:'s1',v:15,s:'+'},{id:'s2',v:27,s:''},{id:'s3',v:3,s:'+'},{id:'s4',v:6,s:'+'}];
+targets.forEach(t=>{
+  const el=document.getElementById(t.id);if(!el)return;
+  const start=performance.now()+1000,dur=1400;
+  function tick(now){
+    if(now<start){requestAnimationFrame(tick);return;}
+    const p=Math.min(1,(now-start)/dur);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(e*t.v)+t.s;
+    if(p<1)requestAnimationFrame(tick);else el.textContent=t.v+t.s;
+  }
+  requestAnimationFrame(tick);
+});
+
+// FORM — sends to yahyaabdela13@gmail.com via Formspree
+document.getElementById('form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const btn=this.querySelector('.send-top span:first-child');
+  const orig=btn.textContent;
+  btn.textContent='Sending...';
+
+  // Collect form data
+  const fd=new FormData(this);
+  const data={};
+  fd.forEach((v,k)=>data[k]=v);
+  // Add metadata for the email
+  data._subject='New Message from Yahya Website — '+(data.service||'General Inquiry');
+  data._replyto=data.email;
+  data._format='plain';
+
+  try{
+    const r=await fetch('https://formspree.io/f/meedqrog',{
+      method:'POST',
+      body:JSON.stringify(data),
+      headers:{'Content-Type':'application/json','Accept':'application/json'}
+    });
+    if(r.ok){
+      this.querySelector('.send-btn').style.display='none';
+      document.getElementById('ok').style.display='block';
+      this.reset();
+    } else {
+      // Fallback to mailto if Formspree fails
+      const body=`Name: ${data.name}%0AEmail: ${data.email}%0AOrganisation: ${data.org||'-'}%0ACountry: ${data.country||'-'}%0AService: ${data.service||'-'}%0A%0AMessage:%0A${data.message}`;
+      window.location.href=`mailto:yahyaabdela13@gmail.com?subject=${encodeURIComponent(data._subject)}&body=${body}`;
+      btn.textContent='Opening email...';
+      setTimeout(()=>{btn.textContent=orig;},2000);
+    }
+  } catch(err) {
+    // Network error - use mailto fallback
+    const body=`Name: ${data.name}%0AEmail: ${data.email}%0AOrganisation: ${data.org||'-'}%0ACountry: ${data.country||'-'}%0AService: ${data.service||'-'}%0A%0AMessage:%0A${data.message}`;
+    window.location.href=`mailto:yahyaabdela13@gmail.com?subject=${encodeURIComponent(data._subject)}&body=${body}`;
+    btn.textContent='Opening email...';
+    setTimeout(()=>{btn.textContent=orig;},2000);
+  }
+});
+
+// 3D HERO GLOBE
+(function(){
+  const cv=document.getElementById('heroCv');
+  if(!cv||!window.THREE)return;
+  const el=cv.parentElement;
+  const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  function size(){renderer.setSize(el.offsetWidth,el.offsetHeight);}
+  size();renderer.setClearColor(0x000000,0);
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,el.offsetWidth/el.offsetHeight,.1,500);
+  camera.position.set(0,0,22);
+
+  const R=6.2;
+  // Light wireframe globe
+  const wireMat=new THREE.MeshBasicMaterial({color:0x1E3FB8,wireframe:true,transparent:true,opacity:.25});
+  const wire=new THREE.Mesh(new THREE.IcosahedronGeometry(R,3),wireMat);
+  scene.add(wire);
+  // Inner solid sphere
+  const inner=new THREE.Mesh(new THREE.SphereGeometry(R*.98,48,48),new THREE.MeshPhongMaterial({color:0xFFFFFF,emissive:0xEEF2FC,specular:0x1E3FB8,shininess:30,transparent:true,opacity:.96}));
+  scene.add(inner);
+  // Glow
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(R*1.06,32,32),new THREE.MeshBasicMaterial({color:0x3B5FE0,transparent:true,opacity:.04,side:THREE.BackSide})));
+
+  // Grid
+  const grid=new THREE.Group();scene.add(grid);
+  for(let la=-80;la<=80;la+=20){
+    const r2=Math.cos(la*Math.PI/180)*R,y=Math.sin(la*Math.PI/180)*R,pts=[];
+    for(let i=0;i<=128;i++){const a=i/128*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*r2,y,Math.sin(a)*r2));}
+    grid.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x6B8AF0,transparent:true,opacity:la===0?.45:.12})));
+  }
+  for(let lo=0;lo<360;lo+=20){
+    const pts=[];
+    for(let i=0;i<=64;i++){const la=(i/64*180-90)*Math.PI/180,lo2=lo*Math.PI/180;pts.push(new THREE.Vector3(Math.cos(la)*Math.cos(lo2)*R,Math.sin(la)*R,Math.cos(la)*Math.sin(lo2)*R));}
+    grid.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x6B8AF0,transparent:true,opacity:.1})));
+  }
+
+  // Coastline land dots
+  const coasts=[
+    // Africa
+    [[37,-11],[40,-10],[42,-8],[44,-8],[46,-6],[46,-4],[44,-2],[41,2],[40,6],[38,10],[37,14],[36,16],[37,18],[37,22],[36,24],[25,24],[20,20],[15,15],[14,10],[12,6],[10,2],[5,2],[0,6],[-4,5],[-8,5],[-12,6],[-15,10],[-15,12],[-14,16],[-15,18],[-17,20],[-16,24],[-10,24],[0,24],[4,30],[8,34],[12,38],[14,42],[12,46],[14,50],[18,48],[24,46],[28,42],[34,36],[38,32],[44,24],[48,16],[50,12],[50,8],[46,2],[42,-2],[40,-6],[38,-8],[37,-11]],
+    [[-8,36],[0,36],[4,40],[8,44],[8,46],[10,48],[12,50],[14,52],[16,54],[18,56],[22,60],[24,64],[20,62],[14,58],[8,56],[4,52],[0,48],[-4,44],[-8,40],[-8,36]],
+    [[26,40],[30,44],[34,48],[38,52],[44,58],[50,60],[60,60],[70,60],[80,56],[88,48],[90,48],[94,52],[98,54],[104,50],[110,50],[116,50],[120,48],[126,50],[130,50],[134,48],[138,44],[142,40],[142,38],[140,36],[136,32],[130,26],[124,20],[118,14],[112,8],[106,2],[100,4],[96,8],[90,14],[84,20],[78,26],[72,26],[70,24],[64,18],[58,12],[52,8],[46,14],[40,20],[36,24],[32,28],[28,36],[26,40]],
+    [[-82,8],[-70,20],[-66,24],[-66,32],[-70,40],[-70,44],[-66,48],[-60,54],[-60,58],[-66,64],[-76,70],[-88,70],[-100,60],[-110,60],[-120,54],[-124,48],[-124,42],[-124,38],[-118,30],[-110,22],[-100,18],[-92,20],[-88,16],[-82,10],[-82,8]],
+    [[-68,-4],[-64,0],[-60,4],[-58,6],[-60,8],[-60,12],[-52,12],[-46,6],[-40,0],[-34,-6],[-34,-12],[-34,-18],[-38,-22],[-44,-28],[-50,-34],[-54,-38],[-60,-44],[-66,-50],[-70,-52],[-70,-46],[-68,-44],[-62,-30],[-62,-22],[-62,-14],[-62,-6],[-64,-4],[-68,-4]],
+    [[114,-22],[118,-18],[124,-14],[130,-14],[136,-12],[140,-16],[144,-20],[148,-24],[152,-28],[150,-30],[146,-34],[142,-38],[138,-36],[132,-32],[128,-34],[122,-30],[118,-26],[114,-22]]
+  ];
+  function pip(lo,la,p){let ins=false;for(let i=0,j=p.length-1;i<p.length;j=i++){const xi=p[i][0],yi=p[i][1],xj=p[j][0],yj=p[j][1];if(((yi>la)!=(yj>la))&&(lo<(xj-xi)*(la-yi)/(yj-yi)+xi))ins=!ins;}return ins;}
+  function isLand(lo,la){for(const c of coasts)if(pip(lo,la,c))return true;return false;}
+  function ll2v(la,lo,r){const phi=(90-la)*Math.PI/180,th=(lo+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(phi)*Math.cos(th),r*Math.cos(phi),r*Math.sin(phi)*Math.sin(th));}
+
+  const dp=[],dc=[];
+  for(let la=-85;la<=85;la+=2){
+    for(let lo=-180;lo<=180;lo+=2){
+      if(!isLand(lo,la))continue;
+      const v=ll2v(la+(Math.random()-.5)*.8,lo+(Math.random()-.5)*.8,R+.04);
+      dp.push(v.x,v.y,v.z);
+      if(pip(lo,la,coasts[0])){dc.push(.12,.25,.72);} else {dc.push(.42,.54,.94);}
+    }
+  }
+  const dg=new THREE.BufferGeometry();
+  dg.setAttribute('position',new THREE.Float32BufferAttribute(dp,3));
+  dg.setAttribute('color',new THREE.Float32BufferAttribute(dc,3));
+  inner.add(new THREE.Points(dg,new THREE.PointsMaterial({size:.14,vertexColors:true,transparent:true,opacity:.95})));
+
+  // Ethiopia HQ + cities
+  const cities=[
+    {la:9,lo:38.7,col:0xEF4444,r:.32,hq:true,label:'ETHIOPIA'},
+    {la:-1.3,lo:36.8,col:0x1E3FB8,r:.16},
+    {la:6.5,lo:3.4,col:0x1E3FB8,r:.15},
+    {la:-1.95,lo:30.06,col:0x1E3FB8,r:.15},
+    {la:25.2,lo:55.3,col:0x3B5FE0,r:.18},
+    {la:24.7,lo:46.7,col:0x3B5FE0,r:.18},
+    {la:51.5,lo:-.1,col:0x6B8AF0,r:.14},
+    {la:40.7,lo:-74,col:0x6B8AF0,r:.14},
+    {la:35.7,lo:139.7,col:0x6B8AF0,r:.14},
+    {la:28.6,lo:77.2,col:0x6B8AF0,r:.14}
+  ];
+  const cGrp=new THREE.Group();scene.add(cGrp);
+  cities.forEach((c,i)=>{
+    const v=ll2v(c.la,c.lo,R+.1);
+    const m=new THREE.Mesh(new THREE.SphereGeometry(c.r,12,12),new THREE.MeshBasicMaterial({color:c.col}));
+    m.position.copy(v);m.userData={ph:i*.4,hq:c.hq};cGrp.add(m);
+    const rg=new THREE.Mesh(new THREE.RingGeometry(c.r*1.8,c.r*2.6,24),new THREE.MeshBasicMaterial({color:c.col,transparent:true,opacity:.35,side:THREE.DoubleSide}));
+    rg.position.copy(v);rg.lookAt(0,0,0);
+    rg.userData={ring:true,ph:i*.4,hq:c.hq};cGrp.add(rg);
+    if(c.hq){
+      // Extra big halo for Ethiopia
+      const rg2=new THREE.Mesh(new THREE.RingGeometry(c.r*3,c.r*3.5,32),new THREE.MeshBasicMaterial({color:c.col,transparent:true,opacity:.2,side:THREE.DoubleSide}));
+      rg2.position.copy(v);rg2.lookAt(0,0,0);rg2.userData={ring:true,ph:0,hq:true};cGrp.add(rg2);
+    }
+  });
+
+  // Arcs Ethiopia → world
+  const aGrp=new THREE.Group();scene.add(aGrp);
+  const pGrp=new THREE.Group();scene.add(pGrp);
+  const pkts=[];
+  const hq=cities[0];
+  for(let i=1;i<cities.length;i++){
+    const va=ll2v(hq.la,hq.lo,R+.1),vb=ll2v(cities[i].la,cities[i].lo,R+.1);
+    const mid=va.clone().add(vb).multiplyScalar(.5).normalize().multiplyScalar(R+va.distanceTo(vb)*.45+1.5);
+    const curve=new THREE.QuadraticBezierCurve3(va,mid,vb);
+    const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(50)),new THREE.LineBasicMaterial({color:0x1E3FB8,transparent:true,opacity:.18}));
+    line.userData={spd:.3+Math.random()*.4,ph:Math.random()*Math.PI*2};
+    aGrp.add(line);
+    const pm=new THREE.Mesh(new THREE.SphereGeometry(.08,8,8),new THREE.MeshBasicMaterial({color:0x3B5FE0}));
+    pm.userData={curve,prog:Math.random(),spd:.003+Math.random()*.004};
+    pGrp.add(pm);pkts.push(pm);
+  }
+
+  // Outer rings
+  const orings=[];
+  [{r:R*1.22,col:0x1E3FB8,tx:.3,spd:.003},{r:R*1.36,col:0x3B5FE0,tx:-.5,spd:-.002},{r:R*1.5,col:0x6B8AF0,tx:1.0,spd:.0015}].forEach(c=>{
+    const m=new THREE.Mesh(new THREE.TorusGeometry(c.r,.018,4,120),new THREE.MeshBasicMaterial({color:c.col,transparent:true,opacity:.3}));
+    m.rotation.x=c.tx;m.userData.spd=c.spd;scene.add(m);orings.push(m);
+  });
+
+  scene.add(new THREE.AmbientLight(0xFFFFFF,1.5));
+  const pl=new THREE.PointLight(0x3B5FE0,3,40);pl.position.set(12,10,12);scene.add(pl);
+
+  let mox=0,moy=0;
+  document.addEventListener('mousemove',e=>{mox=(e.clientX/window.innerWidth-.5)*2;moy=-(e.clientY/window.innerHeight-.5)*2;});
+  window.addEventListener('resize',()=>{camera.aspect=el.offsetWidth/el.offsetHeight;camera.updateProjectionMatrix();size();});
+
+  let t=0;
+  function anim(){
+    requestAnimationFrame(anim);t+=.005;
+    const ry=t*.12+(mox*.3),rx=moy*.15;
+    [inner,wire,grid,cGrp,aGrp,pGrp].forEach(g=>{g.rotation.y=ry;g.rotation.x=rx;});
+    cGrp.children.forEach(c=>{
+      if(c.userData.ring){
+        const sp=c.userData.hq?1.2:1;
+        const s=sp+.5*Math.sin(t*2+c.userData.ph);
+        c.scale.setScalar(s);
+        c.material.opacity=.15+.25*Math.sin(t*2+c.userData.ph);
+      } else if(c.userData.ph!==undefined){
+        c.scale.setScalar(c.userData.hq?1+.4*Math.sin(t*2.5):1+.15*Math.sin(t*2.5+c.userData.ph));
+      }
+    });
+    aGrp.children.forEach(l=>{l.material.opacity=.1+.15*Math.sin(t*l.userData.spd*40+l.userData.ph);});
+    pkts.forEach(p=>{p.userData.prog+=p.userData.spd;if(p.userData.prog>1)p.userData.prog=0;p.position.copy(p.userData.curve.getPoint(p.userData.prog));const f=Math.sin(p.userData.prog*Math.PI);p.material.opacity=f*.9;p.scale.setScalar(.5+f*.8);});
+    orings.forEach(r=>{r.rotation.y+=r.userData.spd;});
+    pl.position.x=Math.sin(t*.3)*15;pl.position.z=Math.cos(t*.3)*15;
+    camera.position.x+=(mox*.7-camera.position.x)*.03;
+    camera.position.y+=(moy*.5-camera.position.y)*.03;
+    camera.lookAt(0,0,0);
+    renderer.render(scene,camera);
+  }
+  anim();
+})();
+</script>
+</body>
+</html>
